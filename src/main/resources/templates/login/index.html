@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300&subset;=latin,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css' />
+    <link href="./public/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="./public/css/login.css" rel="stylesheet" type="text/css"/>
+
+	<meta content="" name="description"/>
+	<meta content="" name="author"/>
+	<title>Цус сэлбэлт судалалын үндэсний төв</title>
+	<link rel="shortcut icon" href="./public/img/favicon.ico"/>
+</head>
+<body>
+	<nav class="navbar navbar-default" id="pageHeader">
+	  <div class="container-fluid">
+	  	Цус сэлбэлт судлалын үндэсний төв
+	  </div>
+	</nav>
+	<nav class="navbar" id="dropHeader">
+	  <img src="./public/img/drop.png" id="dropImg" />
+	</nav>
+
+	<div class="wrapper">
+	    <form class="form-signin" th:action="@{/login}" method="post">  
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+	    	<img id="logoImg" class="center-block img-responsive" src="./public/img/logo.png" />
+	    	
+			<div th:if="${param.error}" class="alert alert-danger display-hide">
+		    	<span> Хэрэглэгчийн нэр эсвэл нууц үг буруу байна. </span>
+		    </div>
+	    	
+	      	<input type="text" class="form-control inputStyle" name="username" placeholder="НЭВТРЭХ НЭР" autofocus="" />
+	      	<input type="password" class="form-control inputStyle" name="password" placeholder="НУУЦ ҮГ" />      
+	      	<button class="btn btn-lg btn-primary btn-block" id="buttonStyle" type="submit">НЭВТРЭХ</button>   
+	    </form>
+	</div>
+
+	<!-- END LOGIN -->
+	<script src="./public/plugins/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./public/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+</body>
+</html>

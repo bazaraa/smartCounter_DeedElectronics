@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html layout:decorator="shared/layout">
+<body>
+	<div layout:fragment="content">
+
+		<div class="row">
+			<div class=" col-sm-12">
+				<div class="portlet light ">
+				
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="icon-bar-chart font-red-sunglo hide"></i>
+							<span class="caption-subject font-red-sunglo bold uppercase">Алдаа гарлаа</span>
+							<span class="caption-helper" style="font-size: 11px;" th:text="${#dates.format(datetime, 'yyyy.MM.dd HH:mm')}"></span>
+						</div>
+					</div>
+							
+					<div class="portlet-body">
+						
+						<div>
+							<b><i>"<span th:text="${url}"></span>"</i></b>  хуудас руу хандахад алдаа гарлаа. Алдааны утга:  <br />
+							<span th:text="${exception.toString()}"></span> 
+								
+						</div>
+					 <br />
+					<a id="showErrorDetail" href="#">Алдааны дэлгэрэнгүй:</a> <br />
+					<div id="errorDetail" style="display: none;">
+						<div th:each="trace : ${exception.stackTrace}"> 
+							<span th:text="${trace.toString()}"></span>						
+							<br />
+						</div>
+					</div>
+					<br />
+		
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>	
+	
+	<div layout:fragment="pagefoot">
+		<script>
+			jQuery(document).ready(function() {
+				$("#showErrorDetail").click(function() {
+					$("#errorDetail").toggle();
+				});
+			});
+		</script>
+	</div>
+</body>
+</html>

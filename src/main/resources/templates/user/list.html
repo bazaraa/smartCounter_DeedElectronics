@@ -1,0 +1,98 @@
+<!Doctype html>
+
+<html layout:decorator="shared/layout">
+<head>
+</head>
+<body>
+
+	<div layout:fragment="pageheader">
+		<!-- BEGIN PAGE LEVEL STYLES -->
+		<link rel="stylesheet" type="text/css" href="/assets/global/plugins/select2/select2.css" th:href="@{/assets/global/plugins/select2/select2.css}"/>
+		<link rel="stylesheet" type="text/css" href="/assets/global/plugins/datatables/extensions/Scroller/css/dataTables.scroller.min.css" th:href="@{/assets/global/plugins/datatables/extensions/Scroller/css/dataTables.scroller.min.css}"/>
+		<link rel="stylesheet" type="text/css" href="/assets/global/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css" th:href="@{/assets/global/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css}"/>
+		<link rel="stylesheet" type="text/css" href="/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css" th:href="@{/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css}"/>
+		<!-- END PAGE LEVEL STYLES -->
+
+	</div>
+	<div layout:fragment="content">
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-edit"></i>Хэрэглэгчийн бүртгэл
+				</div>
+				<div class="tools">
+					<a href="javascript:;" class="collapse"></a>
+				</div>
+			</div>
+			<div class="portlet-body">
+				<div class="table-toolbar">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="col-md-6" style="padding: 0px; margin: 0px;">
+								<div class="btn-group">
+									<a id="users_editable_1_new" class="btn blue" th:href="@{/user}">
+										Шинээр нэмэх <i class="fa fa-plus"></i>
+									</a>
+								</div>
+							</div>
+							<table class="table table-striped table-hover table-bordered"
+								id="users_editable_1">
+								<thead>
+									<tr>
+										<th></th>
+										<th>Хэрэглэгчийн нэр</th>
+										<th>Нэр</th>
+										<th>Овог</th>
+										<th>Системийн хэрэглэгч</th>
+										<th>Байгууллага</th>
+										<th>Идэвхтэй эсэх</th>
+										<th>Засах</th>
+										<th>Устгах</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="user : ${users}">
+										<td th:text="${user.id}"></td>
+										<td th:text="${user.username}"></td>
+										<td th:text="${user.firstName}"></td>
+										<td th:text="${user.lastName}"></td>
+										<td>
+											<span th:if="${user.sysUser}" checked="true">Тийм</span>
+											<span th:unless="${user.sysUser}" checked="false">Үгүй</span>
+										</td>
+										<td th:text="${user.organization != null ? user.organization.name : ''}"></td>
+										<td>
+											<span th:if="${user.active}" checked="true">Тийм</span>
+											<span th:unless="${user.active}" checked="false">Үгүй</span>
+										</td>
+										<td style="text-align: center;"><a class="edit" th:href="@{'user/' + ${user.id}}"><i class="fa fa-pencil-square-o fa-lg"></i></a></td>
+										<td style="text-align: center;"><a class="delete" href="javascript:;"><i class="fa fa-trash fa-lg"></i></a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div layout:fragment="pagefoot">
+		<!-- BEGIN PAGE LEVEL PLUGINS -->
+		<script type="text/javascript" src="/assets/global/plugins/select2/select2.min.js" th:src="@{/assets/global/plugins/select2/select2.min.js}"></script>
+		<script type="text/javascript" src="/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js" th:src="@{/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js}"></script>
+		<script type="text/javascript" src="/assets/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js" th:src="@{/assets/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js}"></script>
+		<script type="text/javascript" src="/assets/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js" th:src="@{/assets/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js}"></script>
+		<script type="text/javascript" src="/assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.min.js" th:src="@{/assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.min.js}"></script>
+		<script type="text/javascript" src="/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js" th:src="@{/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js}"></script>
+		<!-- END PAGE LEVEL PLUGINS -->
+		<script src="/public/scripts/users.js" th:src="@{/public/scripts/users.js}"></script>
+
+		<script>
+			jQuery(document).ready(function() {
+				usersTable.init();
+			});
+		</script>
+	</div>
+
+</body>
+</html>

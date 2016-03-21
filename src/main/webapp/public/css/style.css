@@ -1,0 +1,105 @@
+.page-sidebar .page-sidebar-menu > li > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a
+{
+	font-size: 12px !important;
+}
+.portlet > .portlet-title > .caption {
+	font-size: 14px;
+}
+
+label, body, .btn, .form-control {
+	font-size: 12px;
+}
+
+.form-control {
+	height: 31px;
+}
+
+div.dataTables_filter input {
+	width: initial !important;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > img
+{
+	max-height: 39px;
+	max-width: 39px;
+	height: auto;
+}
+
+.nav-tabs > li > a, .nav-pills > li > a {
+	font-size: 12px;
+}
+
+#order-form .portlet.light > .portlet-title > .caption > .caption-subject {
+	font-size: 11px !important;
+}
+
+.portlet.light > .portlet-title > .caption > .caption-subject {
+	font-size: 11px !important;
+}
+
+.table thead tr th {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+table.editColumnTable>tbody>tr>td, 
+table.editColumnTable>tfoot>tr>td, 
+table.editColumnTable>thead>tr>td
+{
+	padding: 0px;
+}
+
+.page-sidebar .page-sidebar-menu .sub-menu li > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a
+{
+	font-size: 12px;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu > li > a {
+	font-size: 12px;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > .username {
+	font-size: 12px;
+}
+
+.portlet.light {
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+}
+
+.portlet.light > .portlet-title
+{
+	min-height: 24px;
+}
+
+
+.page-header.navbar .page-logo .logo-default {
+    margin: 10px 0 0 -10px !important;
+}
+
+.portlet.box.blue > .portlet-title {
+    background-color: #95A5A6;
+}
+
+.portlet.box.blue {
+    border: 1px solid #95A5A6;
+    border-top: 0;
+}
+.portlet > .portlet-body.blue, .portlet.blue {
+    background-color: #95A5A6;
+}
+
+@media (min-width: 768px){
+	.page-footer {
+	    margin-left: 195px;
+	}
+}
+
+.page-footer {
+    color: #58666e !important;
+    background-color: #edf1f2 !important;
+    border-top: 1px solid #dee5e7 !important;
+}
+
+.page-footer-inner {
+	color: #58666e !important;
+}
