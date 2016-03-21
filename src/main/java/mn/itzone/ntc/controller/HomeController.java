@@ -1,5 +1,5 @@
 package mn.itzone.ntc.controller;
-
+ 
 import java.security.Principal;
 
 import javax.validation.Valid;

@@ -1,5 +1,5 @@
 package mn.itzone.ntc.config;
-
+ 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;

@@ -1,0 +1,20 @@
+#preorder-form .portlet.light {
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+}
+
+#preorder-form .portlet.light > .portlet-title > .caption {
+	padding: 0px;
+}
+
+#preorder-form .portlet.light > .portlet-title {
+	min-height: 24px;
+}
+
+#preorder-form .portlet.light > .portlet-title > .tools {
+	padding: 5px;
+}
+
+#preorder-form .portlet.light > .portlet-title > .caption > .caption-subject {
+	font-size: 12px;
+}

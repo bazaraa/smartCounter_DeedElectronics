@@ -2,7 +2,7 @@ package mn.itzone.ntc.model.enums;
 
 public enum OrganizationLevelEnum {
 	
-	level1("Улс"), 
+	level1("Улс"),  
 	levle2("Нийслэл"),
 	level3("Дүүрэг"),
 	levle4("Аймаг"),

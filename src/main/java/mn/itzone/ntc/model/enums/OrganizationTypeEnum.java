@@ -4,7 +4,7 @@ public enum OrganizationTypeEnum {
 	
 	type1("Цусны төв болон салбар нэгжүүд"), 
 	type2("Ханган нийлүүлэгч"),
-	type3("Бусад"); 
+	type3("Бусад");  
 	
 	private String label;
 	
