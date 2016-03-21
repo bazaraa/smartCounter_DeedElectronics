@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<div class="page-sidebar navbar-collapse collapse" th:fragment="menu">
+		<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+			<li sec:authorize="hasRole('ROLE_ADMIN')">
+				<a href="javascript:;"> 
+					<img src="/assets/admin/img/icon/order.png" width="31" /> 
+					<span class="title">Удирдлага тохиргоо</span> <span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/reports">Байгууллага</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/reports">Хэрэглэгч</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/reports">Эрхийн тохиргоо</a></li>
+				</ul>
+			</li>
+			<li sec:authorize="hasRole('ROLE_ADMIN')">
+				<a href="javascript:;"> 
+					<img src="/assets/admin/img/icon/order.png" width="31" /> 
+					<span class="title">Тоног төхөөрөмж</span> <span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/reports">Тоног төхөөрөмж</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/reports">Тавилга хэрэгсэл</a></li>
+				</ul>
+			</li>
+			<li sec:authorize="hasRole('ROLE_ADMIN')">
+				<a href="javascript:;"> 
+					<img src="/assets/admin/img/icon/order.png" width="31" /> 
+					<span class="title">Засвар үйлчилгээ</span> <span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/reports">Засварын хүсэлт</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/reports">Засвар</a></li>
+				</ul>
+			</li>
+			<li  sec:authorize="hasRole('ROLE_ADMIN')" class="last">
+				<a href="/reports"> 
+					<img src="/assets/admin/img/icon/report.png" width="31" /> 
+					<span class="title">Тайлан</span>
+				</a>
+			</li>
+		</ul>
+		<!-- END SIDEBAR MENU -->
+	</div>
+</body>
+</html>

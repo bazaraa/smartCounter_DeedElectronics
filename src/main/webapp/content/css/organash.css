@@ -1,0 +1,30 @@
+#organash-form .portlet.light {
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+}
+
+#organash-form .portlet.light > .portlet-title > .caption {
+	padding: 0px;
+}
+
+#organash-form .portlet.light > .portlet-title {
+	min-height: 24px;
+}
+
+#organash-form .portlet.light > .portlet-title > .tools {
+	padding: 5px;
+}
+
+#organash-form .portlet.light > .portlet-title > .caption > .caption-subject {
+	font-size: 12px;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
