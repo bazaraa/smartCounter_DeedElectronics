@@ -1,6 +1,6 @@
 var CRSWebUtils = (function () {
     var CRSWeb_Utils = function () {
-    	this.dtLangMN = { 
+    	this.dtLangMN = {
     		    "sEmptyTable":     "Хүснэгт хоосон байна",
     	        "sInfo":           "Нийт _TOTAL_ бичлэгээс _START_ - _END_ харуулж байна",
     	        "sInfoEmpty":      "Тохирох үр дүн алга",

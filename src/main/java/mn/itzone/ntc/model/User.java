@@ -29,7 +29,7 @@ public class User extends BaseObject {
 	private String regName;
 
 	private String phone;
-	
+
 	@Column(length = 255)
 	private String email;
 
@@ -162,4 +162,13 @@ public class User extends BaseObject {
 	public void setPasswordRepeated(String passwordRepeated) {
 		this.passwordRepeated = passwordRepeated;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 }

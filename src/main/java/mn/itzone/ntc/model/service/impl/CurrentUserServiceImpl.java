@@ -16,8 +16,7 @@ public class CurrentUserServiceImpl implements CurrentUserService {
 
     @Override
     public boolean canAccessUser(CurrentUser currentUser, Long userId) {
-        return currentUser != null
-                && (currentUser.getRole().getCode().equals("ROLE_ADMIN") || currentUser.getUser().getId().equals(userId));
+        return currentUser != null && (currentUser.getRole().getCode().equals("ROLE_ADMIN") || currentUser.getUser().getId().equals(userId));
     }
 
 }

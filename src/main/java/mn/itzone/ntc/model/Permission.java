@@ -3,7 +3,7 @@ package mn.itzone.ntc.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
-import javax.persistence.Enumerated; 
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 import mn.itzone.ntc.model.enums.ModulesEnum;

@@ -39,7 +39,7 @@ public class UsersController {
         	{
         		users.remove(i);
         		break;
-        	} 
+        	}
         }
         
         return new ModelAndView("user/list", "users", users);

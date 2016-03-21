@@ -1,6 +1,6 @@
 package mn.itzone.ntc.controller;
 
-import java.util.Date; 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -74,7 +74,7 @@ public class PermissionController {
 				cresult.setSuccess(false);
 				cresult.setMessage("Тухайн эрхийн мэдээлэл хэрэглэгчийн бүлгийн бүртгэлд ашиглагдсан тул устгах боломжгүй.");
 				return cresult;	
-			} 
+			}
 			
 			permissionService.delete(permission.getId());
 
