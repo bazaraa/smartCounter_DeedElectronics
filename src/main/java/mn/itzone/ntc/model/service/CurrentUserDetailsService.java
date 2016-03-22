@@ -25,6 +25,7 @@ public class CurrentUserDetailsService implements UserDetailsService {
         this.userService = userService;
     }
 
+    
     @Override
     @Transactional(readOnly=true)
     public CurrentUser loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -39,5 +40,4 @@ public class CurrentUserDetailsService implements UserDetailsService {
         	
         return new CurrentUser(user.get());
     }
-
 }

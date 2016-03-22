@@ -18,6 +18,4 @@ public class CurrentUserControllerAdvice {
     public CurrentUser getCurrentUser(Authentication authentication) {
         return (authentication == null) ? null : (CurrentUser) authentication.getPrincipal();
     }
-
-
 }

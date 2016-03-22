@@ -19,6 +19,8 @@ import mn.itzone.ntc.model.service.UserService;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostFilter;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -46,7 +48,7 @@ public class OrganizationController {
 		model.addAttribute("organization", organization);	
 		return "organization/index";
 	}
-
+	
 	//Байгууллага жагсаалт үүсгэх
 	@RequestMapping(value = "/organizations")
 	public String List(Principal currentUser, Model model, HttpSession session) {
@@ -55,6 +57,7 @@ public class OrganizationController {
 	}
 	
 	//Байгууллага нэмэх хэсэг
+	@PreAuthorize("hasPermission(#currentUser, 'admin')")
 	@RequestMapping(value = "/organization", method = RequestMethod.POST)
 	public String SaveOrganization(Principal currentUser,
 			@Valid @ModelAttribute("organization") Organization organization,
@@ -67,6 +70,19 @@ public class OrganizationController {
 
 		Organization savedOrganization = null;
 		User user = userService.findByUserName(currentUser.getName());
+		if(user != null){
+			if(user.getRole() != null){
+				if(user.getRole().getPermissions() != null){
+					for (int i = 0; i < user.getRole().getPermissions().size(); i++) {
+						if(user.getRole().getPermissions().get(i) != null){
+							if(user.getRole().getPermissions().get(i).getCode() != null){
+								
+							}
+						}
+					}
+				}
+			}
+		}
 		if (organization.getId() == null) {
 			savedOrganization = new Organization();
 			savedOrganization.setCreatedDate(new Date());
