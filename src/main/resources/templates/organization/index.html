@@ -141,9 +141,7 @@
 										<div class="row">
 											<div class="col-md-1"></div>
 											<div class="col-md-7">
-												
-												   <a th:href="@{/organizations}"><i class="fa fa-arrow-left"></i> Жагсаалтруу очих </a>
-												
+												   <a sec:authorize="hasRole('read')" th:href="@{/organizations}"><i class="fa fa-arrow-left"></i> Жагсаалтруу очих </a>
 											</div>
 											<div class="col-md-4">
 												<button type="submit" class="btn blue">Хадгалах</button>

@@ -19,7 +19,6 @@ import mn.itzone.ntc.model.service.UserService;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,7 +44,8 @@ public class OrganizationController {
 		model.addAttribute("aimag", organizationService.findAllAimag());
 		model.addAttribute("orgs", organizationService.findAll());
 		Organization organization = new Organization();
-		model.addAttribute("organization", organization);	
+		model.addAttribute("organization", organization);
+		
 		return "organization/index";
 	}
 	

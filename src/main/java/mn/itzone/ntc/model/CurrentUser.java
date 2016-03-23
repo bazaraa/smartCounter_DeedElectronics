@@ -24,16 +24,16 @@ public class CurrentUser extends
 	}
 	
 	 public static String [] getPermissionList(User user){
-		 if (codes == null) {
-			 codes = new String[user.getRole().getPermissions().size() + 1];
-		 }
+		 codes = new String[user.getRole().getPermissions().size() + 1];
 		 codes[0] = user.getRole().getCode();
-		 	int index = 1;
+		 int index = 1;
 	        for (Permission per : user.getRole().getPermissions()) {
-	        	codes[index] =per.getCode();
+	        	System.err.println("index :" + index);
+	        	codes[index] = per.getCode();
 	        	index++;
 			}
 	        
+	     System.err.println("end :" + codes.length);
 		 return codes;
 	 } 
    
