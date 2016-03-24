@@ -12,6 +12,7 @@ import mn.itzone.ntc.model.User;
 import mn.itzone.ntc.model.repository.RoleRepository;
 import mn.itzone.ntc.model.repository.UserRepository;
 import mn.itzone.ntc.model.service.UserService;
+import mn.itzone.ntc.model.view.UserView;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -92,5 +93,43 @@ public class UserServiceImpl implements UserService {
 	public User findOne(Long id) {
 		// TODO Auto-generated method stub
 		return userRepository.findOne(id);
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<User> findByView(UserView view) {
+		String query="";	
+		query="SELECT c "
+				+ "FROM mn.itzone.ntc.model.User c"
+				+ " WHERE 1=1";
+
+		if(view.getFirstName() != null && !view.getFirstName().equals("")){
+			query = query + " AND c.firstName = :name";
+		}
+		
+		if(view.getOrganization() != null){
+			query = query + " AND c.organization.id = :orgId";
+		}
+		
+		if(view.getRegisterNum() != null && !view.getRegisterNum().equals("")){
+			query = query + " AND c.regName = :regName";
+		}
+				
+		@SuppressWarnings("rawtypes")
+		TypedQuery q = ppd.createQuery(query, User.class);
+		
+		if(view.getFirstName() != null && !view.getFirstName().equals("")){
+			q.setParameter("name", view.getFirstName());
+		}
+
+		if(view.getOrganization() != null){
+			q.setParameter("orgId", view.getOrganization());
+		}
+		
+		if(view.getRegisterNum() != null && !view.getRegisterNum().equals("")){
+			q.setParameter("regName", view.getRegisterNum());
+		}
+	    
+		return (List<User>)q.getResultList();
 	}
 }

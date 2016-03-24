@@ -15,11 +15,11 @@ import mn.itzone.ntc.model.enums.OrganizationLevelEnum;
 import mn.itzone.ntc.model.enums.OrganizationTypeEnum;
 import mn.itzone.ntc.model.service.OrganizationService;
 import mn.itzone.ntc.model.service.UserService;
+import mn.itzone.ntc.model.view.OrganizationView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -53,11 +53,11 @@ public class OrganizationController {
 	@RequestMapping(value = "/organizations")
 	public String List(Principal currentUser, Model model, HttpSession session) {
 		model.addAttribute("organizations", organizationService.findAll());
+		model.addAttribute("orgTypes", OrganizationTypeEnum.values());
 		return "organization/list";
 	}
 	
 	//Байгууллага нэмэх хэсэг
-	@PreAuthorize("hasPermission(#currentUser, 'admin')")
 	@RequestMapping(value = "/organization", method = RequestMethod.POST)
 	public String SaveOrganization(Principal currentUser,
 			@Valid @ModelAttribute("organization") Organization organization,
@@ -70,19 +70,7 @@ public class OrganizationController {
 
 		Organization savedOrganization = null;
 		User user = userService.findByUserName(currentUser.getName());
-		if(user != null){
-			if(user.getRole() != null){
-				if(user.getRole().getPermissions() != null){
-					for (int i = 0; i < user.getRole().getPermissions().size(); i++) {
-						if(user.getRole().getPermissions().get(i) != null){
-							if(user.getRole().getPermissions().get(i).getCode() != null){
-								
-							}
-						}
-					}
-				}
-			}
-		}
+
 		if (organization.getId() == null) {
 			savedOrganization = new Organization();
 			savedOrganization.setCreatedDate(new Date());
@@ -179,6 +167,7 @@ public class OrganizationController {
 		return cresult;
 	}
 	
+	//Сонгосон аймагт харьяалагдах сумын жагсаалт
 	@ResponseBody
 	@RequestMapping(value = "/organization/getsums/{id}", method = RequestMethod.GET)
 	public String GetNodes(@PathVariable Long id, Model model) {
@@ -194,5 +183,54 @@ public class OrganizationController {
 			}
 		}
 		return json.toString();
+	}
+	
+	//Байгууллагын төрлөөр шүүж байна
+	@RequestMapping(value = "/organizations/{type}")
+	public String GetType(@PathVariable OrganizationTypeEnum type, Model model) {
+
+		if (type.equals(null)) {
+			model.addAttribute("orgTypes", OrganizationTypeEnum.values());
+			model.addAttribute("organizations", organizationService.findAll());
+			model.addAttribute("org", type.name().toString());
+		} else {
+			List<Organization> organizations = organizationService.getOrgs(type);
+			if (organizations == null)
+				return "redirect:/organizations";
+			model.addAttribute("orgTypes", OrganizationTypeEnum.values());
+			model.addAttribute("organizations", organizations);
+			model.addAttribute("org", type.name().toString());
+		}
+		return "organization/list";
+
+	}
+	
+	//Байгууллагын нэрээр хайж байна
+	@RequestMapping(value = "/organization/search", method = RequestMethod.POST)
+	public String SearchOrganization(Principal currentUser,
+			@Valid 
+			@ModelAttribute("view") OrganizationView view,
+			BindingResult result, Model model) {
+		
+		if (result.hasErrors()) {
+			model.addAttribute("errors", result.getAllErrors());
+			return "organization/list";
+		}
+
+		List<Organization> savedOrganization = organizationService.findByOrgName(view);
+		model.addAttribute("organizations", savedOrganization);
+		model.addAttribute("orgTypes", OrganizationTypeEnum.values());
+		model.addAttribute("org", view.getOrgType().name().toString());
+		model.addAttribute("orgName", view.getName());
+		
+		
+		return "organization/list";
+
+	}
+	
+	//Хайх шууд жагсаалтруу үсрэх
+	@RequestMapping(value = "/organization/search", method = RequestMethod.GET)
+	public String GetPageClear() {
+		return "redirect:/organizations";
 	}
 }

@@ -36,7 +36,15 @@ public class RoleController {
     public String Index(Model model) {    	
 
     	List<Role> roles = roleService.findAll();
-    	
+    		for (int i = 0; i < roles.size(); i++) {
+				if(roles.get(i) != null){
+					if(roles.get(i).getCode() != null){
+						if(roles.get(i).getCode().equals("ROLE_ADMIN")){
+							roles.remove(i);
+						}
+					}
+				}
+			}
 		model.addAttribute("roles", roles);
 		
         return "role/list";

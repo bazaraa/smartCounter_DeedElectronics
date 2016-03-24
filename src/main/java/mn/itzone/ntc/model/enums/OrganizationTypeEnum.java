@@ -1,6 +1,6 @@
 package mn.itzone.ntc.model.enums;
 
-public enum OrganizationTypeEnum {
+public enum OrganizationTypeEnum{
 	
 	type1("Цусны төв болон салбар нэгжүүд"), 
 	type2("Ханган нийлүүлэгч"),

@@ -16,6 +16,7 @@ var orgTable= function() {
 			"lengthMenu" : [ [ 5, 15, 20, -1 ], [ 5, 15, 20, "All" ] ],
 			// set the initial value
 			"pageLength" : 20,
+			"bFilter": false,
 			"bLengthChange": false,
 			"bAutoWidth": false,
 			"language" : CRSWebUtils.dtLangMN,
@@ -124,3 +125,10 @@ var orgTable= function() {
 	};
 
 }();
+
+$("#orgType").change(function() {
+	var type = $("#orgType").val();
+	url = "/ntc/organizations/" + type;
+
+	window.location.href = url;
+});

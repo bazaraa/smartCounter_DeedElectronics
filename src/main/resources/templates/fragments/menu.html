@@ -11,7 +11,7 @@
 				<ul class="sub-menu">
 					<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/organizations}">Байгууллага</a></li>
 					<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/users}">Хэрэглэгч</a></li>
-					<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{roles}">Эрхийн тохиргоо</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/roles}">Эрхийн тохиргоо</a></li>
 				</ul>
 			</li>
 			<li sec:authorize="hasRole('ROLE_ADMIN')">

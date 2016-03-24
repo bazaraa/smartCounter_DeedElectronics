@@ -16,6 +16,7 @@ var usersTable = function() {
 			"lengthMenu" : [ [ 5, 15, 20, -1 ], [ 5, 15, 20, "All" ] ],
 			// set the initial value
 			"pageLength" : 20,
+			"bFilter": false,
 			"bLengthChange": false,
 			"language" : CRSWebUtils.dtLangMN,
 			"columnDefs" : [ { // set default column settings

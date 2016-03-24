@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import mn.itzone.ntc.model.User;
+import mn.itzone.ntc.model.view.UserView;
 
 public interface UserService {
 
@@ -26,5 +27,7 @@ public interface UserService {
     List<User> findByRole(String roleCode);
     
     void deleteUser(long id);
+    
+    List<User> findByView(UserView view);
 
 }

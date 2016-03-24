@@ -103,3 +103,9 @@ table.editColumnTable>thead>tr>td
 .page-footer-inner {
 	color: #58666e !important;
 }
+
+
+.clearfix {
+	clear:both;
+}
+

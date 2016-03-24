@@ -5,6 +5,8 @@ import java.util.List;
 import mn.itzone.ntc.model.Aimag;
 import mn.itzone.ntc.model.Organization;
 import mn.itzone.ntc.model.Sum;
+import mn.itzone.ntc.model.enums.OrganizationTypeEnum;
+import mn.itzone.ntc.model.view.OrganizationView;
 
 public interface OrganizationService {
 
@@ -19,4 +21,8 @@ public interface OrganizationService {
 	List<Aimag> findAllAimag();
 	
 	List<Sum> findByAimag(Long id);
+	
+	List<Organization> getOrgs(OrganizationTypeEnum type);
+	
+	List<Organization> findByOrgName(OrganizationView view);
 }

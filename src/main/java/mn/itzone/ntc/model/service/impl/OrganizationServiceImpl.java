@@ -9,10 +9,12 @@ import javax.persistence.TypedQuery;
 import mn.itzone.ntc.model.Aimag;
 import mn.itzone.ntc.model.Organization;
 import mn.itzone.ntc.model.Sum;
+import mn.itzone.ntc.model.enums.OrganizationTypeEnum;
 import mn.itzone.ntc.model.repository.AimagRepository;
 import mn.itzone.ntc.model.repository.OrganizationRepository;
 import mn.itzone.ntc.model.repository.SumRepository;
 import mn.itzone.ntc.model.service.OrganizationService;
+import mn.itzone.ntc.model.view.OrganizationView;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -66,5 +68,46 @@ public class OrganizationServiceImpl implements OrganizationService {
 
 		return (List<Sum>) query.getResultList();
 	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Organization> getOrgs(OrganizationTypeEnum type) {
+		@SuppressWarnings("rawtypes")
+		TypedQuery query = ppd.createQuery("SELECT c "
+				+ "FROM mn.itzone.ntc.model.Organization c "
+				+ "WHERE c.organizationType = ?1", Organization.class);
+	    query.setParameter(1, type);
+	    
+		return (List<Organization>)query.getResultList();
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Organization> findByOrgName(OrganizationView view) {
+		String query="";	
+		query="SELECT c "
+				+ "FROM mn.itzone.ntc.model.Organization c"
+				+ " WHERE 1=1";
 
+		if(view.getName()!=null){
+			query = query + " AND c.name LIKE :name";
+		}
+		
+		if(view.getOrgType()!=null){
+			query = query + " AND c.organizationType = :orgType";
+		}
+				
+		@SuppressWarnings("rawtypes")
+		TypedQuery q = ppd.createQuery(query,Organization.class);
+		
+		if(view.getName()!=null){
+			q.setParameter("name", "%" + view.getName() + "%");
+		}
+		
+		if(view.getOrgType()!=null){
+			q.setParameter("orgType", view.getOrgType());
+		}
+	    
+		return (List<Organization>)q.getResultList();
+	}
 }

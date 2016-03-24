@@ -28,41 +28,43 @@
 				</div>
 			</div>
 			<div class="portlet-body">
-				<div class="table-toolbar">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="col-md-6">
-								<div class="btn-group">
-									<a id="roles_editable_1_new" class="btn blue" th:href="@{/role}">
-										Шинээр нэмэх <i class="fa fa-plus"></i>
-									</a>
+				<div sec:authorize="hasRole('ROLE_READ') or hasRole('ROLE_ADMIN')">
+					<div class="table-toolbar">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="col-md-6">
+									<div class="btn-group">
+										<a id="roles_editable_1_new" sec:authorize="hasRole('ROLE_CREATE') or hasRole('ROLE_ADMIN')" class="btn blue" th:href="@{/role}"> 
+											Шинээр нэмэх <i class="fa fa-plus"></i>
+										</a>
+									</div>
 								</div>
+								<table class="table table-striped table-hover table-bordered"
+									id="roles_editable_1">
+									<thead>
+										<tr>
+											<th></th>
+											<th>Бүлгийн код</th>
+											<th>Бүлгийн нэр</th>
+											<th>Засах</th>
+											<th>Устгах</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="role : ${roles}">
+											<td th:text="${role.id}"></td>
+											<td th:text="${role.code}"></td>
+											<td th:text="${role.name}"></td>
+	
+											<td style="text-align: center;"><a class="edit" sec:authorize="hasRole('ROLE_CREATE') or hasRole('ROLE_ADMIN')"
+												th:href="@{'role/' + ${role.id}}"><i
+													class="fa fa-pencil-square-o fa-lg"></i></a></td>
+											<td style="text-align: center;"><a class="delete" sec:authorize="hasRole('ROLE_DELETE') or hasRole('ROLE_ADMIN')"
+												href="javascript:;"><i class="fa fa-trash fa-lg"></i></a></td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
-							<table class="table table-striped table-hover table-bordered"
-								id="roles_editable_1">
-								<thead>
-									<tr>
-										<th></th>
-										<th>Бүлгийн код</th>
-										<th>Бүлгийн нэр</th>
-										<th>Засах</th>
-										<th>Устгах</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="role : ${roles}">
-										<td th:text="${role.id}"></td>
-										<td th:text="${role.code}"></td>
-										<td th:text="${role.name}"></td>
-
-										<td style="text-align: center;"><a class="edit"
-											th:href="@{'role/' + ${role.id}}"><i
-												class="fa fa-pencil-square-o fa-lg"></i></a></td>
-										<td style="text-align: center;"><a class="delete"
-											href="javascript:;"><i class="fa fa-trash fa-lg"></i></a></td>
-									</tr>
-								</tbody>
-							</table>
 						</div>
 					</div>
 				</div>
