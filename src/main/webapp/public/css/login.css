@@ -1,17 +1,20 @@
 body {
-    margin: 0px;
-    background: #eee !important; 
+  background: url('../img/background.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #pageHeader {
-    background-color: #ED3237;
-    margin: 0px;
+    background-color: #206FB3;
     text-align: center;
     font-weight: 300;
     color: #FFFFFF;
     font-size: 24px;
     font-family: 'Roboto Condensed', sans-serif;
-    padding-top: 5px;
+    padding-top: 10px;
+    border: 0;
 }
 
 
@@ -19,7 +22,7 @@ body {
     margin-top: -5px;
     padding-left: 125px;
     background: transparent;
-    border: 0;
+    
 }
 
 #dropImg {
@@ -49,7 +52,7 @@ body {
     max-width: 380px;
     padding: 15px 35px 45px;
     margin: 0 auto;
-    background-color: #FFFFFF;
+    background-color: #206FB3;
     border: 1px solid rgba(0,0,0,0.1);  
 
     .form-control {
@@ -66,10 +69,13 @@ body {
 }
 
 #logoImg {
-    margin: 60px auto;
-    width: 150px;
+    margin: 30px auto;
+    width: 200px;
 }
-
+#corner{
+	width: 80px;
+	margin-top:-40px;
+}
 .inputStyle {
     border: 0;
     background-color: #D2D3D5;
@@ -78,7 +84,7 @@ body {
 }
 
 #buttonStyle{
-    background-color: #ED3237;
+    background-color: #08265A;
     color: #FFFFFF;
     border: 0;
     font-family: 'Roboto Condensed', sans-serif;

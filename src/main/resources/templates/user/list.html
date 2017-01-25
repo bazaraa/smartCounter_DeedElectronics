@@ -26,7 +26,7 @@
 		<div class="portlet box blue">
 			<div class="portlet-title">
 				<div class="caption">
-					<i class="fa fa-edit"></i>Хэрэглэгчийн бүртгэл
+					<i class="fa fa-edit"></i>Хэрэглэгчийн жагсаалт
 				</div>
 				<div class="tools">
 					<a href="javascript:;" class="collapse"></a>
@@ -34,105 +34,68 @@
 			</div>
 			<div class="portlet-body">
 				<div class="table-toolbar">
-					<div sec:authorize="hasRole('USER_READ') or hasRole('ROLE_ADMIN')">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="portlet">
-									<div class="portlet-title">
-										<div class="caption">
-											<span
-												class="caption-subject bold font-grey-gallery uppercase">
-												Хайх </span> <span class="caption-helper"> </span>
-										</div>
-										<div class="tools">
-											<a href="#" class="collapse"> </a>
-										</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="portlet">
+								<div class="portlet-title">
+									<div class="caption">
+										<span class="caption-subject bold font-grey-gallery uppercase">
+											Хэрэглэгчийн жагсаалт </span> <span class="caption-helper"> </span>
 									</div>
-									<div class="portlet-body">
-										<form th:action="@{/user/search}" class="form-horizontal"
-											method="post" accept-charset="utf-8" autocomplete="off"
-											enctype="multipart/form-data">
-											<div class="col-md-2">
-												<label>Байгууллага</label> <select
-													class="form-control" name="organization">
-													<option value="">Сонгох...</option>
-													<option th:each="org : ${organizations}"
-														th:value="${org.id}" th:text="${org.name}"
-														th:attr="selected=${(organization == org.id) ? true : false}"></option>
-												</select>
-											</div>
-											<div class="col-md-2">
-												<label>Нэр</label> <input
-													type="text" class="form-control" name="firstName"
-													th:value="${firstname}" />
-											</div>
-											<div class="col-md-2">
-												<label>Регистерийн дугаар</label>
-												<input type="text" class="form-control" name="registerNum"
-													th:value="${regnum}" />
-											</div>
-											<div class="col-md-2">
-											<label>Регистерийн дугаар</label>
-												<button type="submit" class="btn blue">Хайх</button>
-											</div>
-										</form>
+									<div class="tools" style="float: left;">
+										<a href="#" class="collapse"> </a>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-12">
-								<hr />
-								<div class="col-md-2" style="padding: 0px; margin: 0px;">
-									<div class="btn-group">
-										<a id="users_editable_1_new"
-											sec:authorize="hasRole('USER_CREATE') or hasRole('ROLE_ADMIN')"
-											class="btn blue" th:href="@{/user}"> Шинээр нэмэх <i
-											class="fa fa-plus"></i>
-										</a>
-									</div>
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-2" style="padding: 0px; margin: 0px;">
+								<div class="btn-group">
+									<a id="users_editable_1_new"
+										sec:authorize="hasRole('SYS_CREATE') or hasRole('ROLE_ADMIN')"
+										class="btn blue" th:href="@{/user}"> Хэрэглэгч бүртгэх <i
+										class="fa fa-plus"></i>
+									</a>
 								</div>
-								<div th:if="${#lists.isEmpty(users)}"
-									class="clearfix alert alert-info">Тохирох өгөгдөл
-									олдсонгүй</div>
-								<table class="table table-striped table-hover table-bordered"
-									th:if="${not #lists.isEmpty(users)}" id="users_editable_1">
-									<thead>
-										<tr>
-											<th></th>
-											<th>Хэрэглэгчийн нэр</th>
-											<th>Нэр</th>
-											<th>Овог</th>
-											<th>Системийн хэрэглэгч</th>
-											<th>Байгууллага</th>
-											<th>Идэвхтэй эсэх</th>
-											<th>Засах</th>
-											<th>Устгах</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr th:each="user : ${users}">
-											<td th:text="${user.id}"></td>
-											<td th:text="${user.username}"></td>
-											<td th:text="${user.firstName}"></td>
-											<td th:text="${user.lastName}"></td>
-											<td><span th:if="${user.sysUser}" checked="true">Тийм</span>
-												<span th:unless="${user.sysUser}" checked="false">Үгүй</span>
-											</td>
-											<td
-												th:text="${user.organization != null ? user.organization.name : ''}"></td>
-											<td><span th:if="${user.active}" checked="true">Тийм</span>
-												<span th:unless="${user.active}" checked="false">Үгүй</span>
-											</td>
-											<td style="text-align: center;"><a class="edit"
-												sec:authorize="hasRole('USER_CREATE') or hasRole('ROLE_ADMIN')"
-												th:href="@{'/user/' + ${user.id}}"><i
-													class="fa fa-pencil-square-o fa-lg"></i></a></td>
-											<td style="text-align: center;"><a class="delete"
-												sec:authorize="hasRole('USER_DELETE') or hasRole('ROLE_ADMIN')"
-												href="javascript:;"><i class="fa fa-trash fa-lg"></i></a></td>
-										</tr>
-									</tbody>
-								</table>
 							</div>
+							<div th:if="${#lists.isEmpty(users)}"
+								class="clearfix alert alert-info"></div>
+							<table class="table table-striped table-hover table-bordered"
+								th:if="${not #lists.isEmpty(users)}" id="users_editable_1">
+								<thead>
+									<tr>
+										<th></th>
+										<th>Хэрэглэгчийн нэр</th>
+										<th>Нэр</th>
+										<th>Овог</th>
+										<th>Системийн хэрэглэгч эсэх</th>
+										<th>Төлөв</th>
+										<th>Засах</th>
+										<th>Устгах</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="user : ${users}">
+										<td th:text="${user.id}"></td>
+										<td th:text="${user.username}"></td>
+										<td th:text="${user.firstName}"></td>
+										<td th:text="${user.lastName}"></td>
+										<td><span th:if="${user.sysUser}" checked="true">Системийн хэрэглэгч</span>
+											<span th:unless="${user.sysUser}" checked="false">Системийн хэрэглэгч биш</span>
+										</td>
+										<td><span th:if="${user.active}" checked="true">Идвэхтэй</span>
+											<span th:unless="${user.active}" checked="false">Идвэхгүй</span>
+										</td>
+										<td style="text-align: center;"><a class="edit"
+											sec:authorize="hasRole('SYS_UPDATE') or hasRole('ROLE_ADMIN')"
+											th:href="@{'/user/' + ${user.id}}"><i
+												class="fa fa-pencil-square-o fa-lg"></i></a></td>
+										<td style="text-align: center;"><a class="delete"
+											sec:authorize="hasRole('SYS_DELETE') or hasRole('ROLE_ADMIN')"
+											href="javascript:;"><i class="fa fa-trash fa-lg"></i></a></td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>

@@ -73,7 +73,7 @@ var orgTable= function() {
 											$
 													.ajax({
 														type : "POST",
-														url : "/ntc/organization/delete",
+														url : "/mnba/organization/delete",
 														async : false,
 														dataType : "json",
 														data : param,

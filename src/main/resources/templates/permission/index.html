@@ -38,7 +38,7 @@
 				<div class="portlet box blue">
 					<div class="portlet-title">
 						<div class="caption">
-							<i class="fa fa-edit"></i>Хэрэглэгчийн эрх бүртгэх
+							<i class="fa fa-edit"></i>Эрхийн тохиргоо
 						</div>
 						<div class="tools">
 							<a href="javascript:;" class="collapse"></a>
@@ -70,7 +70,7 @@
 											<div class="col-md-1"></div>
 											<div class="col-md-10">
 												<div class="form-group">
-													<label class="control-label col-md-3">Эрхийн код
+													<label class="control-label col-md-3">Системийн нэр
 													</label>
 													<div class="col-md-9">
 														<input type="text" name="code"
@@ -79,7 +79,7 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="control-label col-md-3">Эрхийн нэр
+													<label class="control-label col-md-3">Эрхийн код
 													</label>
 													<div class="col-md-9">
 														<input type="text" autocomplete="off" name="name"
@@ -87,18 +87,7 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="control-label col-md-3">Модуль
-													</label>
-													<div class="col-md-9">
-														<select class="form-control" name="module">
-															<option value="">Сонгох...</option>
-															<option th:each="module : ${modules}" th:value="${module.name()}" th:text="${module.label}"
-															th:attr="selected=${(permission.module != null and module.name() == permission.module.name()) ? 'true' : 'false'}"></option>
-														</select>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">Үүсгэсэн </label>
+													<label class="control-label col-md-3">Үүсгэсэн огноо</label>
 													<div class="col-md-9">
 														<input type="text" name="created" disabled="disabled"
 															class="form-control" th:value="${permission.createdDate}" />
@@ -113,7 +102,7 @@
 										<div class="row">
 											<div class="col-md-1"></div>
 											<div class="col-md-7">
-												<a th:href="@{/permissions}"><i class="fa fa-arrow-left"></i> Жагсаалтруу очих </a>
+												<a th:href="@{/permissions}"><i class="fa fa-arrow-left"></i> Жасгаалт руу очих</a>
 											</div>
 											<div class="col-md-4">
 												<button type="submit" class="btn blue">Хадгалах</button>

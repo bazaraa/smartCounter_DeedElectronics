@@ -72,7 +72,7 @@ var usersTable = function() {
 											$
 													.ajax({
 														type : "POST",
-														url : "/ntc/user/delete",
+														url : "/mnba/user/delete",
 														async : false,
 														dataType : "json",
 														data : param,

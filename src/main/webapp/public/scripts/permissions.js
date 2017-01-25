@@ -72,7 +72,7 @@ var perTable= function() {
 											$
 													.ajax({
 														type : "POST",
-														url : "/ntc/permission/delete",
+														url : "/mnba/permission/delete",
 														async : false,
 														dataType : "json",
 														data : param,

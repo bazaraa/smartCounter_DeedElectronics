@@ -3,41 +3,33 @@
 <body>
 	<div class="page-sidebar navbar-collapse collapse" th:fragment="menu">
 		<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-			<li sec:authorize="hasRole('ROLE_ADMIN')">
+			<li>
+				<a href="javascript:;"> 
+					<img src="/assets/admin/img/icon/order.png" th:src="@{/assets/admin/img/icon/reg.png}" width="31" /> 
+					<span class="title">Бүртгэл</span> <span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li><a th:href="@{/permissions}">Албан тушаал</a></li>
+				</ul>
 				<a href="javascript:;"> 
 					<img src="/assets/admin/img/icon/order.png" th:src="@{/assets/admin/img/icon/configuration.png}" width="31" /> 
 					<span class="title">Удирдлага тохиргоо</span> <span class="arrow "></span>
 				</a>
 				<ul class="sub-menu">
-					<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/organizations}">Байгууллага</a></li>
-					<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/users}">Хэрэглэгч</a></li>
-					<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/roles}">Эрхийн тохиргоо</a></li>
+					<li><a th:href="@{/users}">Хэрэглэгч</a></li>
+					<li><a th:href="@{/roles}">Эрхийн тохиргоо</a></li>
 				</ul>
-			</li>
-			<li sec:authorize="hasRole('ROLE_ADMIN')">
-				<a href="javascript:;"> 
-					<img src="/assets/admin/img/icon/order.png" th:src="@{/assets/admin/img/icon/equipment.png}" width="31" /> 
-					<span class="title">Тоног төхөөрөмж</span> <span class="arrow "></span>
+				<a th:href="@{/fly}"> 
+					<img src="/assets/admin/img/icon/order.png" th:src="@{/assets/admin/img/icon/configuration.png}" width="31" /> 
+					<span class = "title" >Нислэг</span>
 				</a>
-				<ul class="sub-menu">
-					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/reports">Тоног төхөөрөмж</a></li>
-					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/reports">Тавилга хэрэгсэл</a></li>
-				</ul>
-			</li>
-			<li sec:authorize="hasRole('ROLE_ADMIN')">
-				<a href="javascript:;"> 
-					<img src="/assets/admin/img/icon/order.png" th:src="@{/assets/admin/img/icon/fix.png}" width="31" /> 
-					<span class="title">Засвар үйлчилгээ</span> <span class="arrow "></span>
+				<a th:href="@{/travel}"> 
+					<img src="/assets/admin/img/icon/order.png" th:src="@{/assets/admin/img/icon/configuration.png}" width="31" /> 
+					<span class="title">Аялал</span> 
 				</a>
-				<ul class="sub-menu">
-					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/reports">Засварын хүсэлт</a></li>
-					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/reports">Засвар</a></li>
-				</ul>
-			</li>
-			<li  sec:authorize="hasRole('ROLE_ADMIN')" class="last">
-				<a href="/reports"> 
-					<img src="/assets/admin/img/icon/report.png" th:src="@{/assets/admin/img/icon/report.png}" width="31" /> 
-					<span class="title">Тайлан</span>
+				<a href="javascript:;"> 
+					<img src="/assets/admin/img/icon/order.png" th:src="@{/assets/admin/img/icon/configuration.png}" width="31" /> 
+					<span class="title">Захиалга</span> 
 				</a>
 			</li>
 		</ul>

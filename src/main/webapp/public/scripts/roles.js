@@ -71,7 +71,7 @@ var rolesTable = function() {
 											$
 													.ajax({
 														type : "POST",
-														url : "/ntc/role/delete",
+														url : "/mnba/role/delete",
 														async : false,
 														dataType : "json",
 														data : param,

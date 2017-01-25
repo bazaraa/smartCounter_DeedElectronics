@@ -18,7 +18,7 @@
 		<div class="portlet box blue">
 			<div class="portlet-title">
 				<div class="caption">
-					<i class="fa fa-edit"></i>Хэрэглэгчийн эрхийн бүртгэл
+					<i class="fa fa-edit"></i>Эрхийн тохиргоо
 				</div>
 				<div class="tools">
 					<a href="javascript:;" class="collapse"></a>
@@ -31,7 +31,7 @@
 							<div class="col-md-6" style="padding: 0px; margin: 0px;">
 								<div class="btn-group">
 									<a id="per_editable_1_new" class="btn blue"
-										th:href="@{/permission}"> Шинээр нэмэх <i class="fa fa-plus"></i>
+										th:href="@{/permission}"> Эрхийн тохиргоо <i class="fa fa-plus"></i>
 									</a>
 								</div>
 							</div>
@@ -40,9 +40,8 @@
 								<thead>
 									<tr>
 										<th></th>
+										<th>Системийн нэр</th>
 										<th>Эрхийн код</th>
-										<th>Эрхийн нэр</th>
-										<th>Модуль</th>
 										<th>Засах</th>
 										<th>Устгах</th>
 									</tr>
@@ -52,7 +51,6 @@
 										<td th:text="${permission.id}"></td>
 										<td th:text="${permission.code}"></td>
 										<td th:text="${permission.name}"></td>
-										<td th:text="${permission.module}"></td>
 										<td style="text-align: center;">
 											<a class="edit" th:href="@{'permission/' + ${permission.id}}"><i class="fa fa-pencil-square-o fa-lg"></i></a>
 										</td>
